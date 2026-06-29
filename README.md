@@ -133,14 +133,14 @@ Standard `COUNT` or `SUM` wouldn't work for these columns. Needed conditional lo
 
 Revenue calculated at the driver level required understanding how `SUMX` iterates row by row versus how `SUM` aggregates and how `RELATED()` pulls values across table relationships into row context.
 
-**Solution:** Built measures incrementally starting from total measures, then scoped driver-level measures — to isolate and verify filter context behavior at each step before combining into more complex expressions.
+**Solution:** Built measures incrementally starting from total measures, then scoped driver-level measures to isolate and verify filter context behavior at each step before combining into more complex expressions.
 
 ---
 
 ## What I Learned
 
 - **A 14-table relational database demands disciplined modeling.** Every relationship decision cascades through every measure.
-- **Filter context is everything in DAX.** The same formula can return completely different results depending on what visual or slicer is active — and that's by design.
+- **Filter context is everything in DAX.** The same formula can return completely different results depending on what visual or slicer is active and that's by design.
 - **Insights without context are noise.** "168 incidents" means nothing. "168 incidents across 85,000 trips, 63 of which were preventable, concentrated in two cities" is a business finding.
 - **The visual-level filter is your friend.** Not every data quality fix belongs in Power Query. Sometimes preserving model integrity means filtering at the report layer.
 - **Dashboard design is part of the analysis.** A well-organized, navigable, visually consistent dashboard is not decoration, it determines whether the insights get read or ignored.
