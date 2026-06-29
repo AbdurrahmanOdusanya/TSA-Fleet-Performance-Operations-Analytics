@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This is my capstone project for the **TsAcademy Data Analytics Programme**, built under the guidance of my mentor **Ezeikel**. It analyzes a comprehensive trucking and fleet operations dataset to surface actionable insights across revenue, driver performance, fleet health, fuel efficiency, and safety all packaged into a four-page interactive Power BI dashboard.
+This is my capstone project for the **TsAcademy Data Analytics Programme**, built under the guidance of my mentor [**Ezeikel**](https://x.com/ezekiel_aleke). It analyzes a comprehensive trucking and fleet operations dataset to surface actionable insights across revenue, driver performance, fleet health, fuel efficiency, and safety all packaged into a four-page interactive Power BI dashboard.
 
 **The Core Question:** Where is this trucking business leaving money on the table, which operational risks demand immediate attention, and what does the data say leadership should prioritize right now?
 
-The goal was not just to build a dashboard that looks good. The goal was to think like an analyst embedded in a real trucking operation — asking uncomfortable questions, connecting numbers to decisions, and translating raw data into business intelligence that actually drives action.
+The goal was not just to build a dashboard that looks good. The goal was to think like an analyst embedded in a real trucking operation asking uncomfortable questions, connecting numbers to decisions, and translating raw data into business intelligence that actually drives action.
 
 ---
 
@@ -75,13 +75,13 @@ All measures stored in a dedicated `_Measures` table for clean report organizati
 
 The dashboard uses a **dark navy and gold color theme** consistent across all four pages, with icon-based KPI cards, interactive slicers, and a top navigation bar for seamless page movement.
 
-**Executive Page** — KPI cards for Total Revenue ($298.62M), Total Profit ($194.66M), Profit Margin (65.2%), On-Time Delivery Rate (55.67%), Total Trips (85K), Fleet Utilization (83.04%), and Total Incidents (168). Supported by revenue vs. potential comparison, revenue by customer type, monthly trend line, and top customer leaderboard.
+**Executive Page:**  KPI cards for Total Revenue ($298.62M), Total Profit ($194.66M), Profit Margin (65.2%), On-Time Delivery Rate (55.67%), Total Trips (85K), Fleet Utilization (83.04%), and Total Incidents (168). Supported by revenue vs. potential comparison, revenue by customer type, monthly trend line, and top customer leaderboard.
 
-**Drivers Page** — Full driver scorecard table with trips completed, incidents, revenue, MPG, driver miles, and OTD rate per driver. Top 10 leaderboards by revenue and trips completed. Filterable by driver name, experience tier, home terminal, and license state.
+**Drivers Page:**  Full driver scorecard table with trips completed, incidents, revenue, MPG, driver miles, and OTD rate per driver. Top 10 leaderboards by revenue and trips completed. Filterable by driver name, experience tier, home terminal, and license state.
 
-**Fleet Page** — Maintenance cost by truck make, fleet maintenance by service type (inspection, repair, preventive), top 10 incident hotspot cities, incident preventability breakdown (preventable vs. non-preventable), and all fleet cost KPIs including fuel surcharge recovery.
+**Fleet Page:**  Maintenance cost by truck make, fleet maintenance by service type (inspection, repair, preventive), top 10 incident hotspot cities, incident preventability breakdown (preventable vs. non-preventable), and all fleet cost KPIs including fuel surcharge recovery.
 
-**Insights Page** — Fifteen synthesized findings written in plain business language, organized across revenue gaps, driver performance patterns, fleet cost efficiency, and safety risk — with direct, actionable recommendations for leadership.
+**Insights Page:**  Fifteen synthesized findings written in plain business language, organized across revenue gaps, driver performance patterns, fleet cost efficiency, and safety risk with direct, actionable recommendations for leadership.
 
 ---
 
@@ -125,7 +125,7 @@ Blank/null rows in the TRIPS table were pulling the total revenue figure incorre
 
 Standard `COUNT` or `SUM` wouldn't work for these columns. Needed conditional logic to count only the "Y" values accurately.
 
-**Solution:** Used `COUNTROWS(FILTER(...))` pattern with explicit text conditions — e.g., `FILTER(SAFETY_INCIDENTS, SAFETY_INCIDENTS[PREVENTABLE_FLAG] = "Y")` — to safely count flagged records regardless of data type.
+**Solution:** Used `COUNTROWS(FILTER(...))` pattern with explicit text conditions e.g., `FILTER(SAFETY_INCIDENTS, SAFETY_INCIDENTS[PREVENTABLE_FLAG] = "Y")` to safely count flagged records regardless of data type.
 
 ---
 
