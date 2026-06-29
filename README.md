@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is my capstone project for the **TsAcademy Data Analytics Programme**, built under the guidance of my mentor **Ezeikel**. It analyzes a comprehensive trucking and fleet operations dataset to surface actionable insights across revenue, driver performance, fleet health, fuel efficiency, and safety — all packaged into a four-page interactive Power BI dashboard.
+This is my capstone project for the **TsAcademy Data Analytics Programme**, built under the guidance of my mentor **Ezeikel**. It analyzes a comprehensive trucking and fleet operations dataset to surface actionable insights across revenue, driver performance, fleet health, fuel efficiency, and safety all packaged into a four-page interactive Power BI dashboard.
 
 **The Core Question:** Where is this trucking business leaving money on the table, which operational risks demand immediate attention, and what does the data say leadership should prioritize right now?
 
@@ -57,7 +57,7 @@ The goal was not just to build a dashboard that looks good. The goal was to thin
 
 ### 1. Data Exploration & Understanding
 
-Before writing a single formula, I mapped out all 14 tables — their columns, data types, grain, and how they connected to each other. Understanding that `TRIPS` was the central fact table and that tables like `DRIVERS`, `TRUCKS`, and `CUSTOMERS` were dimensions shaped every modeling decision that followed.
+Before writing a single formula, I mapped out all 14 tables their columns, data types, grain, and how they connected to each other. Understanding that `TRIPS` was the central fact table and that tables like `DRIVERS`, `TRUCKS`, and `CUSTOMERS` were dimensions shaped every modeling decision that followed.
 
 ### 2. Data Modeling
 
@@ -88,26 +88,26 @@ The dashboard uses a **dark navy and gold color theme** consistent across all fo
 ## Key Findings
 
 **Revenue & Commercial:**
-- The fleet has capacity to generate **$537.65M** annually but captures only **$298.62M** — 44% of revenue potential remains unrealized
-- Profit margin of **65.2%** is strong despite the capture gap — the business is fundamentally healthy
+- The fleet has capacity to generate **$537.65M** annually but captures only **$298.62M** 44% of revenue potential remains unrealized
+- Profit margin of **65.2%** is strong despite the capture gap the business is fundamentally healthy
 - **Contract customers** lead revenue at $112.40M vs. Spot ($94.22M) and Dedicated ($92.00M); converting spot accounts to contracts would stabilize growth
-- **First Group** at $10.39M is a single-point revenue risk — generating $3.12M more than the next closest customer
+- **First Group** at $10.39M is a single-point revenue risk generating $3.12M more than the next closest customer
 
 **Driver Performance:**
-- The busiest driver is not the most profitable — William Wilson completes 1,429 trips ($4.9M) while Joseph Jones does 735 trips and earns $2.63M. **Load quality outweighs trip volume**
-- No driver exceeds **59% OTD rate** — confirming the issue is systemic (scheduling, detention, delivery windows) not individual driver behaviour. Industry standard is above 90%
-- Driver MPG is remarkably consistent (6.46–6.55 range) — fuel cost differences are driven by route distance and truck age, not driver behaviour
+- The busiest driver is not the most profitable, William Wilson completes 1,429 trips ($4.9M) while Joseph Jones does 735 trips and earns $2.63M. **Load quality outweighs trip volume**
+- No driver exceeds **59% OTD rate** confirming the issue is systemic (scheduling, detention, delivery windows) not individual driver behaviour. Industry standard is above 90%
+- Driver MPG is remarkably consistent (6.46–6.55 range) fuel cost differences are driven by route distance and truck age, not driver behaviour
 
 **Fleet & Maintenance:**
 - **23% of the fleet** (28 trucks) sits inactive, accumulating insurance and depreciation with zero revenue return
-- **Freightliner costs 67% more to maintain** than Kenworth ($1.12M vs. $0.67M) — future procurement must factor total cost of ownership
-- Fuel surcharges recover only **$29.98M of $95.59M** in actual fuel costs — leaving $65.61M absorbed by the company. Surcharge renegotiation is urgent
+- **Freightliner costs 67% more to maintain** than Kenworth ($1.12M vs. $0.67M) future procurement must factor total cost of ownership
+- Fuel surcharges recover only **$29.98M of $95.59M** in actual fuel costs leaving $65.61M absorbed by the company. Surcharge renegotiation is urgent
 
 **Safety:**
-- Overall incident rate is low relative to fleet size and trip volume — the fleet is generally safe
-- **Chicago and Miami** each recorded 11 incidents — the highest in the network. Salt Lake City and Seattle follow at 10. These corridors need route-specific risk protocols
-- **37.5% of incidents are preventable** (63 of 168) — and drivers with more experience were more prone to at-fault incidents, suggesting overconfidence. Safety training must target veterans, not just new hires
-- **Charles Hernandez** recorded 6 incidents across 677 trips — the highest rate in the entire scorecard. Requires immediate safety coaching and route review
+- Overall incident rate is low relative to fleet size and trip volume the fleet is generally safe
+- **Chicago and Miami** each recorded 11 incidents the highest in the network. Salt Lake City and Seattle follow at 10. These corridors need route-specific risk protocols
+- **37.5% of incidents are preventable** (63 of 168) and drivers with more experience were more prone to at-fault incidents, suggesting overconfidence. Safety training must target veterans, not just new hires
+- **Charles Hernandez** recorded 6 incidents across 677 trips, the highest rate in the entire scorecard. Requires immediate safety coaching and route review
 
 ---
 
@@ -115,7 +115,7 @@ The dashboard uses a **dark navy and gold color theme** consistent across all fo
 
 **Challenge: Revenue total distorted by blank rows in the TRIPS table**
 
-Blank/null rows in the TRIPS table were pulling the total revenue figure incorrectly. Removing them directly from Power Query would have filtered those rows out of all visuals — distorting trip counts and related metrics.
+Blank/null rows in the TRIPS table were pulling the total revenue figure incorrectly. Removing them directly from Power Query would have filtered those rows out of all visuals distorting trip counts and related metrics.
 
 **Solution:** Applied the filter at the visual level using the Power BI filter pane instead of removing rows from the data model. This preserved data integrity across all other visuals while fixing the specific revenue card.
 
@@ -131,9 +131,9 @@ Standard `COUNT` or `SUM` wouldn't work for these columns. Needed conditional lo
 
 **Challenge: Understanding DAX filter context across related tables**
 
-Revenue calculated at the driver level required understanding how `SUMX` iterates row by row versus how `SUM` aggregates — and how `RELATED()` pulls values across table relationships into row context.
+Revenue calculated at the driver level required understanding how `SUMX` iterates row by row versus how `SUM` aggregates and how `RELATED()` pulls values across table relationships into row context.
 
-**Solution:** Built measures incrementally — starting from total measures, then scoped driver-level measures — to isolate and verify filter context behavior at each step before combining into more complex expressions.
+**Solution:** Built measures incrementally starting from total measures, then scoped driver-level measures — to isolate and verify filter context behavior at each step before combining into more complex expressions.
 
 ---
 
@@ -143,7 +143,7 @@ Revenue calculated at the driver level required understanding how `SUMX` iterate
 - **Filter context is everything in DAX.** The same formula can return completely different results depending on what visual or slicer is active — and that's by design.
 - **Insights without context are noise.** "168 incidents" means nothing. "168 incidents across 85,000 trips, 63 of which were preventable, concentrated in two cities" is a business finding.
 - **The visual-level filter is your friend.** Not every data quality fix belongs in Power Query. Sometimes preserving model integrity means filtering at the report layer.
-- **Dashboard design is part of the analysis.** A well-organized, navigable, visually consistent dashboard is not decoration — it determines whether the insights get read or ignored.
+- **Dashboard design is part of the analysis.** A well-organized, navigable, visually consistent dashboard is not decoration, it determines whether the insights get read or ignored.
 
 ---
 
@@ -169,9 +169,9 @@ Revenue calculated at the driver level required understanding how `SUMX` iterate
 
 ## About
 
-Built by **Abdurrahman Odusanya** as the capstone project for the **TsAcademy Data Analytics Programme**, with mentorship from **Ezeikel**.
+Built by **Abdurrahman Odusanya** as the capstone project for the [**TsAcademy Data Analytics Programme**](https://x.com/TechSphereAcad), with mentorship from [**Ezeikel**](https://x.com/ezekiel_aleke).
 
-This project represents the full arc of a real analytics engagement — from raw relational data and unclear questions, through careful modeling and formula logic, to a polished dashboard with clear, defensible business recommendations.
+This project represents the full arc of a real analytics engagement from raw relational data and unclear questions, through careful modeling and formula logic, to a polished dashboard with clear, defensible business recommendations.
 
 Every decision documented here was made deliberately. Every mistake was a learning.
 
